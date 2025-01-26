@@ -77,7 +77,7 @@ export default function Home() {
             htmlFor="name2"
             className="block text-left text-lg font-semibold mb-2 playwrite"
           >
-            Your Crush's Name
+            Your Crush&apos;s Name
           </label>
           <input
             id="name2"

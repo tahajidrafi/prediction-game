@@ -1,7 +1,6 @@
 import Image from "next/image";
-import React, { use } from "react";
+import React from "react";
 import smirk from "../../../public/assets/smirk.gif";
-import wow from "../../../public/assets/wow.gif";
 interface ErrorModalProps {
   message: string;
   cheating: boolean;

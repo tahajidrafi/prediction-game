@@ -3,7 +3,7 @@ import React from "react";
 import sneak from "../../../public/assets/sneaking-eye.gif";
 
 interface ErrorModalProps {
-  predictionScore: any;
+  predictionScore: number;
   predictionMessage: string;
   onClose: () => void;
 }
