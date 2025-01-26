@@ -78,7 +78,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 h-screen flex items-center justify-center">
+    <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 h-screen flex items-center justify-center text-black">
       <div className="text-center p-8 max-w-lg w-full bg-white rounded-xl shadow-xl animate__animated animate__fadeIn animate__delay-1s mx-4">
         <Image src={gyanBaba} alt="Gyan Baba" />
         <h2 className="text-3xl font-bold mb-4 font-sans sacramento">
