@@ -10,6 +10,7 @@ import Image from "next/image";
 import ErrorModal from "./components/ErrorModal";
 import ResultModal from "./components/resultModal";
 import UsedNameModal from "./components/usedNameModal";
+import axios from "axios";
 
 export default function Home() {
   const [name1, setName1] = useState("");
@@ -22,7 +23,7 @@ export default function Home() {
   const [cheatingMessage, setCheatingMessage] = useState("");
   const [isUsedNameModalOpen, setIsUsedNameModalOpen] = useState(false);
 
-  const handleGenerateResults = () => {
+  const handleGenerateResults = async () => {
     if (!name1 || !name2) {
       setIsErrorModalOpen(true);
       setIsCheating(true);
@@ -35,10 +36,30 @@ export default function Home() {
       setCheatingMessage("Same nam kiw deteho??");
       return;
     }
-    if (name1 === "rafi" || name2 === "rafi") {
-      setIsUsedNameModalOpen(true);
-      return;
+    const airtableApiUrl =
+      "https://api.airtable.com/v0/appBI858XGK6fCWwu/tbljoJitrICOf1BIW";
+    const airtableApiKey =
+      "patLb3YchIJGA7azo.90b24eba1d9799c3b622d961434d7ea682c22b7aba92fed25eddb605176c10b8";
+
+    const data = {
+      fields: {
+        Your_Name: name1,
+        Second_Name: name2,
+      },
+    };
+
+    try {
+      await axios.post(airtableApiUrl, data, {
+        headers: {
+          Authorization: `Bearer ${airtableApiKey}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Data sent to Airtable successfully!");
+    } catch (error) {
+      console.error("Failed to send data to Airtable:", error);
     }
+
     setIsResultModalOpen(true);
     const score = Math.floor(Math.random() * 100);
     const message =
