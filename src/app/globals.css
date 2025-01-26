@@ -19,3 +19,26 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@font-face {
+  font-family: "PlaywriteIN";
+  src: url("../../public/fonts/PlaywriteIN-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.playwrite {
+  font-family: "PlaywriteIN";
+}
+
+@font-face {
+  font-family: "Sacramento";
+  src: url("../../public/fonts/Sacramento-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.sacramento {
+  font-family: "Sacramento";
+}
