@@ -22,6 +22,7 @@ export default function Home() {
   const [isCheating, setIsCheating] = useState(false);
   const [cheatingMessage, setCheatingMessage] = useState("");
   const [isUsedNameModalOpen, setIsUsedNameModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false); // New state for loading
 
   const handleGenerateResults = async () => {
     if (!name1 || !name2) {
@@ -48,6 +49,8 @@ export default function Home() {
       },
     };
 
+    setLoading(true); // Start loading state
+
     try {
       await axios.post(airtableApiUrl, data, {
         headers: {
@@ -59,6 +62,8 @@ export default function Home() {
     } catch (error) {
       console.error("Failed to send data to Airtable:", error);
     }
+
+    setLoading(false); // Stop loading state
 
     setIsResultModalOpen(true);
     const score = Math.floor(Math.random() * 100);
@@ -114,7 +119,11 @@ export default function Home() {
           onClick={handleGenerateResults}
           className="w-full p-4 bg-gradient-to-r from-pink-500 to-pink-700 text-white rounded-lg font-semibold hover:bg-pink-600 transform transition-all duration-300 ease-in-out hover:scale-105"
         >
-          Predict Your Future
+          {loading ? (
+            <span>Loading...</span> // Loading message
+          ) : (
+            "Predict Your Future"
+          )}
         </button>
       </div>
 
